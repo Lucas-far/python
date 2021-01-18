@@ -26,5 +26,6 @@ def make_data(index=1):
     return box
 
 if __name__ == '__main__':
-    print(var := file_counter('/home/lucas/PycharmProjects/python'))
+    from os import getcwd
+    print(var := file_counter(getcwd()))
     print(var2 := make_data(7))
