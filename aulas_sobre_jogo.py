@@ -138,3 +138,31 @@ def parte7():
     if __name__ == '__main__':
         pass
     """
+
+def fonte3():
+    """
+    Curso: || Programação em Python do básico ao avançado
+    Seção: || Seção 25:Projeto Python 1 - Game
+    Aula:  || 180. Implementação - Parte 1
+    """
+
+# Continuação da parte7 (edição do método: jogar)
+def parte8():
+    """
+    def jogar(pontos: int = 0) -> None:
+
+        text = 'Informe a nível de dificuldade desejado: [1, 2, 3 ou 4]'
+        dificuldade: int = int(input(text))
+        calc: Calcular = Calcular(dificuldade)
+        print('Informe o resultado para a seguinte operação')
+        calc.mostrar_operacao()
+        resultado: int = int(input())
+        if calc.checar_resultado(resultado):
+            pontos += 1
+            print(f'Seus pontos: {pontos} ponto(s).')
+        continuar: int = int(input('Deseja continuar? [ 0 = não / 1 = sim ]'))
+        if continuar:
+            jogar(pontos)
+        else:
+            print(f'Sua pontuação final: {pontos} ponto(s).')
+    """
