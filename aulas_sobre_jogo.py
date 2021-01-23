@@ -77,6 +77,10 @@ def parte3():
     @property
     def _gerar_resultado(self: object) -> int:
         pass
+
+    @property
+    def _op_simbolo(self) -> str:
+        pass
     """
 
 # Criação do método __str__
@@ -165,4 +169,111 @@ def parte8():
             jogar(pontos)
         else:
             print(f'Sua pontuação final: {pontos} ponto(s).')
+    """
+
+def fonte4():
+    """
+    Curso: || Programação em Python do básico ao avançado
+    Seção: || Seção 25:Projeto Python 1 - Game
+    Aula:  || 180. Implementação - Parte 2
+    """
+
+# [ raiz / models / calcular.py ]
+"OBS"  # Ao escolher a dificuldade, o método retorna um valor
+"OBS"  # Esse retorno será dado aos atributos de instância [ valor1, valor2 ]
+def parte9():
+    """
+    @property
+    def _gerar_valor(self: object) -> int:
+        if self.dificuldade == 1:
+            return randint(0, 10)
+        elif self.dificuldade == 2:
+            return randint(0, 100)
+        elif self.dificuldade == 3:
+            return randint(0, 1_000)
+        elif self.dificuldade == 4:
+            return randint(0, 10_000)
+        else:
+            return randint(0, 100_000)
+    """
+
+# [ raiz / teste.py ] o objeto recebe argumentos entrre  1 até 4
+def parte10():
+    """
+    from models.calcular import Calcular
+
+    calcular: Calcular = Calcular(1)
+    print(calcular)
+
+    EXEMPLO DE RETORNO COM DIFICULDADE 1
+        Valor 1: 1
+        Valor 2: 2
+        Dificuldade: 1
+        Operação: subtração
+
+    EXEMPLO DE RETORNO COM DIFICULDADE 2
+        Valor 1: 72
+        Valor 2: 92
+        Dificuldade: 2
+        Operação: multiplicação
+
+    EXEMPLO DE RETORNO COM DIFICULDADE 3
+        Valor 1: 57
+        Valor 2: 363
+        Dificuldade: 3
+        Operação: soma
+
+    EXEMPLO DE RETORNO COM DIFICULDADE 4
+        Valor 1: 320
+        Valor 2: 6667
+        Dificuldade: 4
+        Operação: multiplicação
+    """
+
+# [ raiz / models / calcular.py ] implementação do método que calcula o resultado entre atributos de instância
+def parte11():
+    """
+    @property
+    def _gerar_resultado(self) -> int:
+        if self.operacao == 1:
+            return self.valor1 + self.valor2
+        elif self.operacao == 2:
+            return self.valor1 - self.valor2
+        else:
+            return self.valor1 * self.valor2
+    """
+
+# [ raiz / models / calcular.py ] implementação do método que retorna o símbolo da operação
+def parte12():
+    """
+    @property
+    def _op_simbolo(self) -> str:
+        if self.__operacao == 1:
+            return '+'
+        elif self.__operacao == 2:
+            return '-'
+        else:
+            return '*'
+    """
+
+# [ raiz / models / calcular.py ]
+def parte13():
+    """
+    def checar_resultado(self, resposta: int) -> bool:
+        certo: bool = False
+
+        if self.resultado == resposta:
+            print('Resposta certa')
+            certo = True
+        else:
+            print('Resposta errada')
+        print(f'{self.valor1} {self._op_simbolo} {self.__valor2} = {self.__resultado}')
+        return certo
+    """
+
+# [ raiz / models / calcular.py ]
+def parte14():
+    """
+    def mostrar_operacao(self) -> None:
+        print(f'{self.valor1} {self._op_simbolo} {self.__valor2} = ?')
     """
