@@ -6,6 +6,7 @@ Módulo: methods.py
 Objetivo: calcular quantos arquivos há neste ambiente virtual
 """
 
+from datetime import datetime
 from os import getcwd
 
 def build_dict(the_key='key', the_value='value') -> dict:
@@ -36,6 +37,54 @@ def make_data(index=1):
     counter = 0
     return box
 
+# Forma 1
+def time_informer() -> None:
+    the_hour = datetime.now().hour
+    the_time = f'{the_hour}:{datetime.now().minute}:{datetime.now().second}'
+    hours = (list(range(0, 24)))
+
+    if the_hour in hours[0:12]:
+        print(the_time, 'bom dia')
+    elif the_hour in hours[12:18]:
+        print(the_time, 'boa tarde')
+    elif the_hour in hours[18:]:
+        print(the_time, 'boa noite')
+    del hours
+
+# Forma 2
+def time_informer2() -> str:
+    the_hour = datetime.now().hour
+    the_time = f'{the_hour}:{datetime.now().minute}:{datetime.now().second}'
+    hours = (list(range(0, 24)))
+
+    conditions = (
+        [True if the_hour in hours[0:12] else False],
+        [True if the_hour in hours[12:18] else False],
+        [True if the_hour in hours[18:] else False],
+    )
+
+    answers = (f'{the_time}, bom dia :)', f'{the_time}, boa tarde', f'{the_time}, boa noite')
+    the_result = answers[conditions.index([True])]
+
+    return the_result
+
+# Forma 3
+def time_informer3() -> None:
+    the_hour = datetime.now().hour
+    the_time = f'{the_hour}:{datetime.now().minute}:{datetime.now().second}'
+    hours = (list(range(0, 24)))
+
+    conditions = [
+        [f'{the_time}, bom dia :)' if the_hour in hours[0:12] else False],
+        [f'{the_time}, boa tarde' if the_hour in hours[12:18] else False],
+        [f'{the_time}, boa noite' if the_hour in hours[18:] else False],
+    ]
+
+    while [False] in conditions:
+        conditions.pop(conditions.index([False]))
+
+    print(*conditions[0])
+
 def word_counter(text: str = 'text') -> dict:
     """ Criar dicionário da quantidade de dados de uma string """
     container = {}
@@ -61,3 +110,6 @@ if __name__ == '__main__':
     # print(make_data(7))
     # print(word_counter('Maria'))
     # print(word_counter2('Maria'))
+    time_informer()
+    print(time_informer2())
+    time_informer3()
