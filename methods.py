@@ -8,6 +8,7 @@ Objetivo: calcular quantos arquivos há neste ambiente virtual
 
 from datetime import datetime
 from os import getcwd
+from typing import Union, Literal
 
 def build_dict(the_key='key', the_value='value') -> dict:
     """
@@ -85,6 +86,41 @@ def time_informer3() -> None:
 
     print(*conditions[0])
 
+def math_maker(
+    value: Union[int, float],
+    operator: Literal['+', '-', '*', '/', '**', '|'],
+    value2: Union[int, float]
+               ) -> None:
+    square_operator = 0.5
+    invalid_operator = '\n========== Erro ==========\nO operador fornecido é inválido:'
+    invalid_cauculus = '\n========== Erro ==========\nDivisão por zero é inválida'
+
+    try:
+        if operator == '+' or operator == '-' or operator == '*' or operator == '/' or operator == '**':
+
+            conditions = [
+                [f'{value} + {value2} = {value + value2:,.2f}' if operator == '+' else None],
+                [f'{value} - {value2} = {value - value2:,.2f}' if operator == '-' else None],
+                [f'{value} x {value2} = {value * value2:,.2f}' if operator == '*' else None],
+                [f'{value} / {value2} = {value / value2:,.2f}' if operator == '/' else None],
+                [f'{value} ** {value2} = {value ** value2:,.2f}' if operator == '**' else None],
+            ]
+
+            while [None] in conditions:
+                conditions.pop(conditions.index([None]))
+            print("".join(conditions[0]))
+
+        elif operator == '|':
+            conditions = [(f'raiz de {value} = {value ** square_operator:,.2f}' if operator == '|' else None)]
+            print("".join(conditions[0]))
+
+        else:
+            print(f'{invalid_operator} {operator!r}')
+
+    except ZeroDivisionError:
+        print(invalid_cauculus)
+
+
 def word_counter(text: str = 'text') -> dict:
     """ Criar dicionário da quantidade de dados de uma string """
     container = {}
@@ -105,11 +141,4 @@ def word_counter2(text: str = 'text') -> dict:
     return container
 
 if __name__ == '__main__':
-    # print(build_dict())
-    print(file_counter(getcwd()))
-    # print(make_data(7))
-    # print(word_counter('Maria'))
-    # print(word_counter2('Maria'))
-    time_informer()
-    print(time_informer2())
-    time_informer3()
+    pass
