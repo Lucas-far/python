@@ -22,7 +22,15 @@ def django():
 
         [flake8]
         max-line-length = 120
-        exclude=.nome_do_ambiente_virtual
+        exclude =
+
+          .nome_do_ambiente_virtual
+
+          ADICIONAIS PARA PROJETO
+          migrations
+          __pycache__
+          manage.py
+          settings.py
 
     4 - No terminal: flake8
     5 - Todos os arquivos serão analizados, com exceção das opções salvas no arquivo: [ .flake8 ]
