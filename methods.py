@@ -8,6 +8,7 @@ Objetivo: calcular quantos arquivos há neste ambiente virtual
 
 from datetime import datetime
 from os import getcwd
+from os import chdir, listdir
 from typing import Union, Literal
 
 def build_dict(the_key='key', the_value='value') -> dict:
@@ -19,6 +20,7 @@ def build_dict(the_key='key', the_value='value') -> dict:
     """
     return {the_key: the_value}
 
+
 def file_counter(the_path_string):
     """"""
     from os import scandir
@@ -26,6 +28,7 @@ def file_counter(the_path_string):
     the_path = tuple(scandir(the_path_string))
     the_result = [str(item.is_file()) for item in the_path].count('True')
     return f'Há {the_result} arquivos em {the_path_string}'
+
 
 def make_data(index=1):
     """"""
@@ -37,6 +40,7 @@ def make_data(index=1):
         counter += 1
     counter = 0
     return box
+
 
 # Forma 1
 def time_informer() -> None:
@@ -51,6 +55,7 @@ def time_informer() -> None:
     elif the_hour in hours[18:]:
         print(the_time, 'boa noite')
     del hours
+
 
 # Forma 2
 def time_informer2() -> str:
@@ -69,6 +74,7 @@ def time_informer2() -> str:
 
     return the_result
 
+
 # Forma 3
 def time_informer3() -> None:
     the_hour = datetime.now().hour
@@ -85,6 +91,7 @@ def time_informer3() -> None:
         conditions.pop(conditions.index([False]))
 
     print(*conditions[0])
+
 
 def math_maker(
     value: Union[int, float],
@@ -121,6 +128,19 @@ def math_maker(
         print(invalid_cauculus)
 
 
+def show_dir_files(the_path: str) -> None:
+    """
+    Go to a path and display files in it
+    :param the_path: str (the exact path of your OS to reach target files)
+    :return: None
+    """
+    chdir(the_path)
+    list_the_path_files: tuple = tuple(enumerate(listdir()))  # files gathered
+    for index, file in list_the_path_files:                   # display files by numbers and name
+        index = index + 1
+        print(f'arquivo: {index} || nome: {file}')
+
+
 def word_counter(text: str = 'text') -> dict:
     """ Criar dicionário da quantidade de dados de uma string """
     container = {}
@@ -134,11 +154,13 @@ def word_counter(text: str = 'text') -> dict:
     counter = 0
     return container
 
+
 def word_counter2(text: str = 'text') -> dict:
     """ Criar dicionário da quantidade de dados de uma string """
     from collections import Counter
     container = Counter(text)
     return container
+
 
 if __name__ == '__main__':
     pass
