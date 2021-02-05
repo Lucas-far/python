@@ -10,6 +10,7 @@ from datetime import datetime
 from os import getcwd
 from os import chdir, listdir
 from typing import Union, Literal
+from os import chdir, getcwd, mkdir
 
 def build_dict(the_key='key', the_value='value') -> dict:
     """
@@ -28,6 +29,27 @@ def file_counter(the_path_string):
     the_path = tuple(scandir(the_path_string))
     the_result = [str(item.is_file()) for item in the_path].count('True')
     return f'Há {the_result} arquivos em {the_path_string}'
+
+
+def folder_generator(the_path: str, name_matrix_dir: str = 'dir_matrix', quantity_dirs: int = 0) -> None:
+    """
+    Creates one dir and gets into it to create the dirs you specifiy
+    :param the_path:        (str) the place in your OS to create the directories (dirs)
+    :param name_matrix_dir: (str) the pattern name of the dirs which will be created for you
+    :param quantity_dirs:   (int) how many directories you will want to be created
+    :return: None
+    """
+
+    dir_for_storage = 0  # creates one dir to store the other dirs which you specify in [ quantity_dirs ]
+    counter = 0
+    while dir_for_storage < 1:
+        chdir(the_path)
+        mkdir(name_matrix_dir)
+        chdir(getcwd() + f'/{name_matrix_dir}/')  # get into the one dir to start creating your dirs
+        dir_for_storage += 1
+        while counter <= quantity_dirs:
+            mkdir(name_matrix_dir + str(counter))  # increment of the name of your dir with an integer, to avoid errors
+            counter += 1
 
 
 def make_data(index=1):
