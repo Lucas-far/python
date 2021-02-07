@@ -28,4 +28,4 @@ def tag_seeker(domain: str = 'https://google.com', tag_name: str = 'title') -> N
         print(obj.next_element)
 
 if __name__ == '__main__':
-    tag_seeker(domain='https://www.udemy.com/', tag_name='section')
+    tag_seeker(domain='https://translate.google.com/', tag_name='span')
